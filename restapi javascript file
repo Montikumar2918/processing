@@ -1,0 +1,22 @@
+let jsonData=new XMLHttpRequest();
+   jsonData.open("GET","https://restcountries.eu/rest/v2/all");
+   jsonData.onload=function(){
+      let t=JSON.parse(this.response);
+      
+      foo(t);
+   };
+   jsonData.onerror=function()
+   {
+      console.log("error",this.statusText);
+   };
+   jsonData.send();
+
+   function foo(value)
+   {
+      for(let key of value)
+      {
+         console.log("flag:",key.flag,"country Name:",key.name,"Sub Region:",key.subregion,"Population:",key.population); 
+         
+      }
+      
+   };
